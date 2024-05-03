@@ -3,16 +3,13 @@ class Shape{
 void Area(float r){
 System.out.println("Area of Circle: "+3.14*r*r);
 }
-
 void Area(int l,int b){
 System.out.println("Area of Rectangle: "+l*b);
 }
-
 void Area(float b,float h){
 System.out.println("Area of Triagle: "+.5*b*h);
 }
 }
-
 class AreaCalculator{
 public static void main(String ar[]){
 int c,p=1;
@@ -43,9 +40,7 @@ case 4: p=0;
 
 default : System.out.println("\nInvalid Input");
         break;
-
 }
-
 }
 }
 }
