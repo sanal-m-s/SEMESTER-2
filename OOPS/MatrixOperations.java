@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Matrix
 {
  int rows,cols;
@@ -13,14 +12,12 @@ class Matrix
   cols=s.nextInt();
   ar=new int[rows][cols];
  }
- 
  Matrix(int r,int c)
  {
   rows=r;
   cols=c;
   ar=new int[rows][cols];
  }
-
  void getData()
  {
   System.out.println("Enter the matrix:");
@@ -29,7 +26,6 @@ class Matrix
         System.out.print("\nValue at Position ("+i+","+j+")"+": ");
       ar[i][j]=s.nextInt();}}
 }
-
 void display()
 {
   for(int i=0;i<rows;i++){
@@ -38,7 +34,6 @@ void display()
      System.out.println();
      }
 }
-
 void sum(Matrix m)
 {
  if(rows==m.rows && cols==m.cols )
@@ -67,8 +62,8 @@ Matrix Product=new Matrix(rows,m.cols);
           }
         }
   Product.display();
-
-   }else{
+   }
+  else{
         System.out.print("\n Can't perform Multiplication");
    }
 }
@@ -90,5 +85,4 @@ class MatrixOperations
   System.out.println("Product is :");
   m.multi(m1);
  }
-
 }
