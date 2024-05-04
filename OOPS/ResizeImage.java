@@ -1,18 +1,14 @@
-
 import java.util.*;
 interface Resizable {
     void resize(int percentage);
 }
-
 class Image implements Resizable {
     private int width;
     private int height;
-
     public Image(int width, int height) {
         this.width = width;
         this.height = height;
     }
-
     @Override
     public void resize(int percentage) {
         double factor = percentage / 100.0;
@@ -23,7 +19,6 @@ class Image implements Resizable {
         System.out.println("Image resized to " + width + "x" + height);
     }
 }
-
 class ResizeImage{
     public static void main(String[] args) {
         int w,h,p;
