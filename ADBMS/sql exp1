@@ -1,0 +1,307 @@
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_23mca48 |
++-------------------+
+| employee          |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
+Empty set (0.00 sec)
+
+mysql> desc employee;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | char(1) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> create table staff(ID char(5),deptID numeric(2),name char(15),designation char(15),basic numeric(10,2),gender char(1));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> desc employee;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | char(1) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> desc staff;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| ID          | char(5)       | YES  |     | NULL    |       |
+| deptID      | decimal(2,0)  | YES  |     | NULL    |       |
+| name        | char(15)      | YES  |     | NULL    |       |
+| designation | char(15)      | YES  |     | NULL    |       |
+| basic       | decimal(10,2) | YES  |     | NULL    |       |
+| gender      | char(1)       | YES  |     | NULL    |       |
++-------------+---------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql>  insert into staff(id,deptid,name,designation,basic,genter)values(102,1,'ram','typist',2000,'M'),(102,2,'arun','analyst',6000,'M'),(121,1,'ruby','typist',2010,'F'),(156,3,'mary','manager',4500,'F'),(123,2,'mridula','analyst',6000,'F'),(114,4,'menon','clerk',1500,'M'),(115,4,'tim','clerk',1500,'m'),(127,2,'kiran' 
+    -> ;
+mysql> insert into staff(Id,deptId,name,designation,basic,gender)values(102,1,'ram','typist',2000,'M'),(102,2,'arun','analyst',6000,'M'),(121,1,'ruby','typist',2010,'F'),(156,3,'mary','manager',4500,'F'),(123,2,'mridula','analyst',6000,'F'),(114,4,'menon','clerk',1500,'M'),(115,4,'tim','clerk',1500,'m'),(127,2,'kiran','manager',4500,'M');
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> desc staff;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| ID          | char(5)       | YES  |     | NULL    |       |
+| deptID      | decimal(2,0)  | YES  |     | NULL    |       |
+| name        | char(15)      | YES  |     | NULL    |       |
+| designation | char(15)      | YES  |     | NULL    |       |
+| basic       | decimal(10,2) | YES  |     | NULL    |       |
+| gender      | char(1)       | YES  |     | NULL    |       |
++-------------+---------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> select * from staff;
++------+--------+---------+-------------+---------+--------+
+| ID   | deptID | name    | designation | basic   | gender |
++------+--------+---------+-------------+---------+--------+
+| 102  |      1 | ram     | typist      | 2000.00 | M      |
+| 102  |      2 | arun    | analyst     | 6000.00 | M      |
+| 121  |      1 | ruby    | typist      | 2010.00 | F      |
+| 156  |      3 | mary    | manager     | 4500.00 | F      |
+| 123  |      2 | mridula | analyst     | 6000.00 | F      |
+| 114  |      4 | menon   | clerk       | 1500.00 | M      |
+| 115  |      4 | tim     | clerk       | 1500.00 | m      |
+| 127  |      2 | kiran   | manager     | 4500.00 | M      |
++------+--------+---------+-------------+---------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select Id,name,designation,basic from staff;
++------+---------+-------------+---------+
+| Id   | name    | designation | basic   |
++------+---------+-------------+---------+
+| 102  | ram     | typist      | 2000.00 |
+| 102  | arun    | analyst     | 6000.00 |
+| 121  | ruby    | typist      | 2010.00 |
+| 156  | mary    | manager     | 4500.00 |
+| 123  | mridula | analyst     | 6000.00 |
+| 114  | menon   | clerk       | 1500.00 |
+| 115  | tim     | clerk       | 1500.00 |
+| 127  | kiran   | manager     | 4500.00 |
++------+---------+-------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> select Id,name from staff WHERE deptId=2;
++------+---------+
+| Id   | name    |
++------+---------+
+| 102  | arun    |
+| 123  | mridula |
+| 127  | kiran   |
++------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select Id,name,designation,deptId,basic,(basic * 0.075)AS DA,(basic * 0.05)AS HRA,(basic + (basic * 0.075)+(basic * 0.05))AS"NETSAL" from staff;
++------+---------+-------------+--------+---------+-----------+----------+------------+
+| Id   | name    | designation | deptId | basic   | DA        | HRA      | NETSAL     |
++------+---------+-------------+--------+---------+-----------+----------+------------+
+| 102  | ram     | typist      |      1 | 2000.00 | 150.00000 | 100.0000 | 2250.00000 |
+| 102  | arun    | analyst     |      2 | 6000.00 | 450.00000 | 300.0000 | 6750.00000 |
+| 121  | ruby    | typist      |      1 | 2010.00 | 150.75000 | 100.5000 | 2261.25000 |
+| 156  | mary    | manager     |      3 | 4500.00 | 337.50000 | 225.0000 | 5062.50000 |
+| 123  | mridula | analyst     |      2 | 6000.00 | 450.00000 | 300.0000 | 6750.00000 |
+| 114  | menon   | clerk       |      4 | 1500.00 | 112.50000 |  75.0000 | 1687.50000 |
+| 115  | tim     | clerk       |      4 | 1500.00 | 112.50000 |  75.0000 | 1687.50000 |
+| 127  | kiran   | manager     |      2 | 4500.00 | 337.50000 | 225.0000 | 5062.50000 |
++------+---------+-------------+--------+---------+-----------+----------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select Id,name,designation,deptId,basic from staff order by basic desc;
++------+---------+-------------+--------+---------+
+| Id   | name    | designation | deptId | basic   |
++------+---------+-------------+--------+---------+
+| 102  | arun    | analyst     |      2 | 6000.00 |
+| 123  | mridula | analyst     |      2 | 6000.00 |
+| 156  | mary    | manager     |      3 | 4500.00 |
+| 127  | kiran   | manager     |      2 | 4500.00 |
+| 121  | ruby    | typist      |      1 | 2010.00 |
+| 102  | ram     | typist      |      1 | 2000.00 |
+| 114  | menon   | clerk       |      4 | 1500.00 |
+| 115  | tim     | clerk       |      4 | 1500.00 |
++------+---------+-------------+--------+---------+
+8 rows in set (0.00 sec)
+
+mysql> select name from staff where designation='typist';
++------+
+| name |
++------+
+| ram  |
+| ruby |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select name from staff where designation in('analyst','manager');
++---------+
+| name    |
++---------+
+| arun    |
+| mary    |
+| mridula |
+| kiran   |
++---------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct designation from staff;
++-------------+
+| designation |
++-------------+
+| typist      |
+| analyst     |
+| manager     |
+| clerk       |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select Id,name,deptId,basic from staff where (designation='manager'or designation='clerk') and basic between 1400 and 4500;
++------+-------+--------+---------+
+| Id   | name  | deptId | basic   |
++------+-------+--------+---------+
+| 156  | mary  |      3 | 4500.00 |
+| 114  | menon |      4 | 1500.00 |
+| 115  | tim   |      4 | 1500.00 |
+| 127  | kiran |      2 | 4500.00 |
++------+-------+--------+---------+
+4 rows in set (0.01 sec)
+
+mysql> select count(name) from staff where gender='M';
++-------------+
+| count(name) |
++-------------+
+|           5 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select distinct designation from staff;
++-------------+
+| designation |
++-------------+
+| typist      |
+| analyst     |
+| manager     |
+| clerk       |
++-------------+
+4 rows in set (0.00 sec)
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 23mca48            |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.01 sec)
+
+
+mysql> use 23mca48;
+Database changed
+
+mysql> select id,name,deptId,basic from staff where(designation='manager'or  designation='clerk')and basic between 1400 and 4500;
++------+-------+--------+---------+
+| id   | name  | deptId | basic   |
++------+-------+--------+---------+
+| 156  | mary  |      3 | 4500.00 |
+| 114  | menon |      4 | 1500.00 |
+| 115  | tim   |      4 | 1500.00 |
+| 127  | kiran |      2 | 4500.00 |
++------+-------+--------+---------+
+4 rows in set (0.02 sec)
+
+mysql> select count(*) from staff where gender='m';
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select designation,max(basic) from staff group by designation;
++-------------+------------+
+| designation | max(basic) |
++-------------+------------+
+| typist      |    2010.00 |
+| analyst     |    6000.00 |
+| manager     |    4500.00 |
+| clerk       |    1500.00 |
++-------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table staff add manager_id char(5);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update staff set manager_id=null where 10 in('101','102');
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update staff set manager_id=null where 10 in('101','102');update staff set manager_id=null where 10 in('121','156');update staff set manager_id='102' where id in('123','114','115');update staff set manager_id='121' where id in('127');
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+Query OK, 3 rows affected (0.02 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> 
+mysql> select manager_id from staff where Name='RAM';
++------------+
+| manager_id |
++------------+
+| NULL       |
++------------+
+1 row in set (0.02 sec)
+
+mysql> select avg(basic) from staff group by deptId;
++-------------+
+| avg(basic)  |
++-------------+
+| 2005.000000 |
+| 5500.000000 |
+| 4500.000000 |
+| 1500.000000 |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select max(basic) from staff;
++------------+
+| max(basic) |
++------------+
+|    6000.00 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select deptId,count(*) from staff group by deptId;
++--------+----------+
+| deptId | count(*) |
++--------+----------+
+|      1 |        2 |
+|      2 |        3 |
+|      3 |        1 |
+|      4 |        2 |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select count(distinct deptId) from staff;
++------------------------+
+| count(distinct deptId) |
++------------------------+
+|                      4 |
++------------------------+
+1 row in set (0.00 sec)
+

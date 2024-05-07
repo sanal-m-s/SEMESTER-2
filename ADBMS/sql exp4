@@ -1,0 +1,335 @@
+    
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 23mca48            |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use 23mca48;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table employe(ID char(5),deptID numeric(2),name char(15),designation char(15),basic numeric(10,2),gender char(1));
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_23mca48 |
++-------------------+
+| employe           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into employe(Id,deptId,name,designation,basic,gender)values(102,1,'ram','typist',2000,'M'),(102,2,'arun','analyst',6000,'M'),(121,1,'ruby','typist',2010,'F'),(156,3,'mary','manager',4500,'F'),(123,2,'mridula','analyst',6000,'F'),(114,4,'menon','clerk',1500,'M'),(115,4,'tim','clerk',1500,'m'),(127,2,'kiran','manager',4500,'M');
+Query OK, 8 rows affected (0.06 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> desc employe;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| ID          | char(5)       | YES  |     | NULL    |       |
+| deptID      | decimal(2,0)  | YES  |     | NULL    |       |
+| name        | char(15)      | YES  |     | NULL    |       |
+| designation | char(15)      | YES  |     | NULL    |       |
+| basic       | decimal(10,2) | YES  |     | NULL    |       |
+| gender      | char(1)       | YES  |     | NULL    |       |
++-------------+---------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employe;
++------+--------+---------+-------------+---------+--------+
+| ID   | deptID | name    | designation | basic   | gender |
++------+--------+---------+-------------+---------+--------+
+| 102  |      1 | ram     | typist      | 2000.00 | M      |
+| 102  |      2 | arun    | analyst     | 6000.00 | M      |
+| 121  |      1 | ruby    | typist      | 2010.00 | F      |
+| 156  |      3 | mary    | manager     | 4500.00 | F      |
+| 123  |      2 | mridula | analyst     | 6000.00 | F      |
+| 114  |      4 | menon   | clerk       | 1500.00 | M      |
+| 115  |      4 | tim     | clerk       | 1500.00 | m      |
+| 127  |      2 | kiran   | manager     | 4500.00 | M      |
++------+--------+---------+-------------+---------+--------+
+8 rows in set (0.01 sec)
+
+mysql> select distinct designation from employe;
++-------------+
+| designation |
++-------------+
+| typist      |
+| analyst     |
+| manager     |
+| clerk       |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select max(basic)from employe where gender='female';
++------------+
+| max(basic) |
++------------+
+|       NULL |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select max(basic)from employe where gender='F';
++------------+
+| max(basic) |
++------------+
+|    6000.00 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select count(designation)from employe;
++--------------------+
+| count(designation) |
++--------------------+
+|                  8 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employe where gender='F'and designation='typist';
++------+--------+------+-------------+---------+--------+
+| ID   | deptID | name | designation | basic   | gender |
++------+--------+------+-------------+---------+--------+
+| 121  |      1 | ruby | typist      | 2010.00 | F      |
++------+--------+------+-------------+---------+--------+
+1 row in set (0.00 sec)
+mysql> select * from employe where gender='M'and designation='clerk' and basic>3000;
+Empty set (0.00 sec)
+
+mysql> select * from employe where (designation='manager'or designation='analyst') and deptID=2;
++------+--------+---------+-------------+---------+--------+
+| ID   | deptID | name    | designation | basic   | gender |
++------+--------+---------+-------------+---------+--------+
+| 102  |      2 | arun    | analyst     | 6000.00 | M      |
+| 123  |      2 | mridula | analyst     | 6000.00 | F      |
+| 127  |      2 | kiran   | manager     | 4500.00 | M      |
++------+--------+---------+-------------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select designation,basic from employe where name='ruby';
++-------------+---------+
+| designation | basic   |
++-------------+---------+
+| typist      | 2010.00 |
++-------------+---------+
+1 row in set (0.00 sec)
+
+mysql> alter table employe add column joining_date date;
+Query OK, 0 rows affected (0.19 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update employe set joining_date='2000-01-01'where name='arun';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employe order by joining_date;
++------+--------+---------+-------------+---------+--------+--------------+
+| ID   | deptID | name    | designation | basic   | gender | joining_date |
++------+--------+---------+-------------+---------+--------+--------------+
+| 102  |      1 | ram     | typist      | 2000.00 | M      | NULL         |
+| 121  |      1 | ruby    | typist      | 2010.00 | F      | NULL         |
+| 156  |      3 | mary    | manager     | 4500.00 | F      | NULL         |
+| 123  |      2 | mridula | analyst     | 6000.00 | F      | NULL         |
+| 114  |      4 | menon   | clerk       | 1500.00 | M      | NULL         |
+| 115  |      4 | tim     | clerk       | 1500.00 | m      | NULL         |
+| 127  |      2 | kiran   | manager     | 4500.00 | M      | NULL         |
+| 102  |      2 | arun    | analyst     | 6000.00 | M      | 2000-01-01   |
++------+--------+---------+-------------+---------+--------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employe order by basic desc;
++------+--------+---------+-------------+---------+--------+--------------+
+| ID   | deptID | name    | designation | basic   | gender | joining_date |
++------+--------+---------+-------------+---------+--------+--------------+
+| 102  |      2 | arun    | analyst     | 6000.00 | M      | 2000-01-01   |
+| 123  |      2 | mridula | analyst     | 6000.00 | F      | NULL         |
+| 156  |      3 | mary    | manager     | 4500.00 | F      | NULL         |
+| 127  |      2 | kiran   | manager     | 4500.00 | M      | NULL         |
+| 121  |      1 | ruby    | typist      | 2010.00 | F      | NULL         |
+| 102  |      1 | ram     | typist      | 2000.00 | M      | NULL         |
+| 114  |      4 | menon   | clerk       | 1500.00 | M      | NULL         |
+| 115  |      4 | tim     | clerk       | 1500.00 | m      | NULL         |
++------+--------+---------+-------------+---------+--------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> create table department(DepId int primary key,D_name varchar(25));
+Query OK, 0 rows affected (0.37 sec)
+
+mysql> insert into department(DepId,D_name)values(1,'design'),(2,'coding'),(3,'testing'),(4,'research');
+Query OK, 4 rows affected (0.06 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> 
+
+select department D_name from employe join department on employe DepId=department.DepId;
+mysql> select name,deptID from employe inner join department on employe.deptID = department.DepId;
++---------+--------+
+| name    | deptID |
++---------+--------+
+| ram     |      1 |
+| arun    |      2 |
+| ruby    |      1 |
+| mary    |      3 |
+| mridula |      2 |
+| menon   |      4 |
+| tim     |      4 |
+| kiran   |      2 |
++---------+--------+
+8 rows in set (0.02 sec)
+
+mysql> select name,deptID from employe inner join department on employe.deptID = department.DepId where name ='arun';
++------+--------+
+| name | deptID |
++------+--------+
+| arun |      2 |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql> select basic from employe where deptID=1;
++---------+
+| basic   |
++---------+
+| 2000.00 |
+| 2010.00 |
++---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employe where designation ='typist' and deptID=1;
++------+--------+------+-------------+---------+--------+--------------+
+| ID   | deptID | name | designation | basic   | gender | joining_date |
++------+--------+------+-------------+---------+--------+--------------+
+| 102  |      1 | ram  | typist      | 2000.00 | M      | NULL         |
+| 121  |      1 | ruby | typist      | 2010.00 | F      | NULL         |
++------+--------+------+-------------+---------+--------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select name,basic from employe where deptID=4;
++-------+---------+
+| name  | basic   |
++-------+---------+
+| menon | 1500.00 |
+| tim   | 1500.00 |
++-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employe where gender ='F' and deptID=3;
++------+--------+------+-------------+---------+--------+--------------+
+| ID   | deptID | name | designation | basic   | gender | joining_date |
++------+--------+------+-------------+---------+--------+--------------+
+| 156  |      3 | mary | manager     | 4500.00 | F      | NULL         |
++------+--------+------+-------------+---------+--------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employe where deptID not in (2,3);
++------+--------+-------+-------------+---------+--------+--------------+
+| ID   | deptID | name  | designation | basic   | gender | joining_date |
++------+--------+-------+-------------+---------+--------+--------------+
+| 102  |      1 | ram   | typist      | 2000.00 | M      | NULL         |
+| 121  |      1 | ruby  | typist      | 2010.00 | F      | NULL         |
+| 114  |      4 | menon | clerk       | 1500.00 | M      | NULL         |
+| 115  |      4 | tim   | clerk       | 1500.00 | m      | NULL         |
++------+--------+-------+-------------+---------+--------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select name,deptID from employe inner join department on employe.deptID = departmen
+t.DepId group by name,deptID having max(employe.basic);
++---------+--------+
+| name    | deptID |
++---------+--------+
+| ram     |      1 |
+| arun    |      2 |
+| ruby    |      1 |
+| mary    |      3 |
+
+mysql> select D_name from department where DepId in(select deptID from employe group by deptID having count(*)=(select min(employe_count) from(select count(*) as employe_count from employe group by deptID)as counts));
++---------+
+| D_name  |
++---------+
+| testing |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select distinct basic from employe order by basic desc limit 1 offset 1;
++---------+
+| basic   |
++---------+
+| 4500.00 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select distinct basic from employe order by basic asc limit 1 offset 1;
++---------+
+| basic   |
++---------+
+| 2000.00 |
++---------+
+1 row in set (0.00 sec)
+
+| mridula |      2 |
+| menon   |      4 |
+| tim     |      4 |
+| kiran   |      2 |
++---------+--------+
+8 rows in set (0.01 sec
+
+mysql> select Name  from employe e where  basic > (SELECT AVG(basic)FROM employe WHERE deptID =e.deptID);
++---------+
+| Name    |
++---------+
+| arun    |
+| ruby    |
+| mridula |
++---------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employe add manager_id char(5);
+Query OK, 0 rows affected (0.43 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update employe set manager_id=null where 10 in('101','102');update employe set manager_id=null where 10 in('121','156');update employe set manager_id='102' where id in('123','114','115');update employe set manager_id='121' where id in('127');
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+Query OK, 3 rows affected (0.07 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> desc employe;
++--------------+---------------+------+-----+---------+-------+
+| Field        | Type          | Null | Key | Default | Extra |
++--------------+---------------+------+-----+---------+-------+
+| ID           | char(5)       | YES  |     | NULL    |       |
+| deptID       | decimal(2,0)  | YES  |     | NULL    |       |
+| name         | char(15)      | YES  |     | NULL    |       |
+| designation  | char(15)      | YES  |     | NULL    |       |
+| basic        | decimal(10,2) | YES  |     | NULL    |       |
+| gender       | char(1)       | YES  |     | NULL    |       |
+| joining_date | date          | YES  |     | NULL    |       |
+| manager_id   | char(5)       | YES  |     | NULL    |       |
++--------------+---------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select Name  from employe where manager_id=(select id from employe where Name='ram'
+);
++---------+
+| Name    |
++---------+
+| mridula |
+| menon   |
+| tim     |
++---------+
+3 rows in set (0.00 sec)
+
+
+
