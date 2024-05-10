@@ -1,7 +1,7 @@
 mysql> show tables;
 +-------------------+
 | Tables_in_23mca48 |
-+-------------------+
++-------------------+ 
 | employee          |
 | staff             |
 | student           |
