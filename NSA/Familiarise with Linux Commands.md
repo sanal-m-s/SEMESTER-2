@@ -1,4 +1,4 @@
-# Experiment No: 1
+# Experiment No:1
 
 ## Familiarise with Linux Commands
 
