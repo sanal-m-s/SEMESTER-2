@@ -38,7 +38,7 @@ tail -n +10 testfile1 | less
 
 #### 5. Get Manual Page and Search
 
-```bash
+```bash 
 man ls | grep -A1 -B1 "alphabetic"
 ```
 
