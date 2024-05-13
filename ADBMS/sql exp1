@@ -201,7 +201,6 @@ mysql> show databases;
 +--------------------+
 3 rows in set (0.01 sec)
 
-
 mysql> use 23mca48;
 Database changed
 
