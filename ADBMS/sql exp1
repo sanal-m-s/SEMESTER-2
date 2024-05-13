@@ -42,8 +42,6 @@ mysql> desc staff;
 +-------------+---------------+------+-----+---------+-------+
 6 rows in set (0.00 sec)
 
-mysql>  insert into staff(id,deptid,name,designation,basic,genter)values(102,1,'ram','typist',2000,'M'),(102,2,'arun','analyst',6000,'M'),(121,1,'ruby','typist',2010,'F'),(156,3,'mary','manager',4500,'F'),(123,2,'mridula','analyst',6000,'F'),(114,4,'menon','clerk',1500,'M'),(115,4,'tim','clerk',1500,'m'),(127,2,'kiran' 
-    -> ;
 mysql> insert into staff(Id,deptId,name,designation,basic,gender)values(102,1,'ram','typist',2000,'M'),(102,2,'arun','analyst',6000,'M'),(121,1,'ruby','typist',2010,'F'),(156,3,'mary','manager',4500,'F'),(123,2,'mridula','analyst',6000,'F'),(114,4,'menon','clerk',1500,'M'),(115,4,'tim','clerk',1500,'m'),(127,2,'kiran','manager',4500,'M');
 Query OK, 8 rows affected (0.01 sec)
 Records: 8  Duplicates: 0  Warnings: 0
