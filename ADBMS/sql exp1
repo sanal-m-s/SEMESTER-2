@@ -1,4 +1,3 @@
-##database changing
 Database changed 
 mysql> show tables;
 +-------------------+
