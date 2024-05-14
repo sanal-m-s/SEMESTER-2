@@ -7,26 +7,26 @@ class CPU{
     double getPrice(){
        return price;
     }
-    class Processor {
+    class Processor{
         int cores;
         String manufacturer;
         Processor(int cores, String manufacturer) {
             this.cores = cores;
             this.manufacturer = manufacturer;
         }
-        public String toString() {
+        public String toString(){
             return "Processor: Cores - " + cores + ", Manufacturer - " + manufacturer;
         }
     }
-    class RAM {
+    class RAM{
         int memory;
         String manufacturer;
 
-        RAM(int memory, String manufacturer) {
+        RAM(int memory, String manufacturer){
             this.memory = memory;
             this.manufacturer = manufacturer;
         }
-        public String toString() {
+        public String toString(){
             return "RAM: Memory - " + memory + ", Manufacturer - " + manufacturer;
         }
     }
