@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class CPU {
+class CPU{
     double price;
     CPU(double price) {
         this.price = price;
