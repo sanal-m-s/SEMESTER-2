@@ -1,10 +1,10 @@
 import java.util.Scanner;
 class CPU{
     double price;
-    CPU(double price) {
+    CPU(double price){
         this.price = price;
     }
-    double getPrice() {
+    double getPrice(){
        return price;
     }
     class Processor {
