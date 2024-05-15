@@ -1,5 +1,5 @@
 import java.util.*; 
-class Shape{
+class Shape{ 
 void Area(float r){
 System.out.println("Area of Circle: "+3.14*r*r);
 }
