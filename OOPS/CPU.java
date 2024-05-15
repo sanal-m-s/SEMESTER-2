@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner; 
 class CPU{
     double price;
     CPU(double price){
