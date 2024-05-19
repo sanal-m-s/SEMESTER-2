@@ -1,4 +1,4 @@
-class Bank {
+class Bank{
     String accountHolderName;
     float accountBalance;
     String accountNumber;
