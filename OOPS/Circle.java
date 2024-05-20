@@ -6,7 +6,7 @@ public class Circle{
     Circle(float radius){
         this.radius = radius;
     }
-    float calculateCircumference() {
+    float calculateCircumference(){
         return (float) (2 * Math.PI * radius);
     }
     float getRadius() {
