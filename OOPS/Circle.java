@@ -9,7 +9,7 @@ public class Circle{
     float calculateCircumference(){
         return (float) (2 * Math.PI * radius);
     }
-    float getRadius() {
+    float getRadius(){
         return radius;
     }
     void setRadius(float radius) {
