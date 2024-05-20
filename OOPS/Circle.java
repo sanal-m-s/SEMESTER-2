@@ -15,7 +15,7 @@ public class Circle{
     void setRadius(float radius){
         this.radius = radius;
     }
-    public static void main(String arg[]) {
+    public static void main(String arg[]){
         Circle circleDefault = new Circle();
         System.out.println("Default Circle Radius: " + circleDefault.getRadius());
         Circle circleParameterized = new Circle(5);
