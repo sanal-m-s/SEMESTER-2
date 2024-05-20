@@ -12,7 +12,7 @@ public class Circle{
     float getRadius(){
         return radius;
     }
-    void setRadius(float radius) {
+    void setRadius(float radius){
         this.radius = radius;
     }
     public static void main(String arg[]) {
