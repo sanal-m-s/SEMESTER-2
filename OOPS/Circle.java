@@ -1,4 +1,4 @@
-public class Circle {
+public class Circle{
     float radius;
     Circle() {
         this.radius = 1;
