@@ -1,6 +1,5 @@
 import java.util.*;
-class Matrix
-{
+class Matrix{
  int rows,cols;
  int ar[][];
  Scanner s=new Scanner(System.in);
