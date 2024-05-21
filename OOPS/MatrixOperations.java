@@ -10,8 +10,7 @@ class Matrix{
   cols=s.nextInt();
   ar=new int[rows][cols];
  }
- Matrix(int r,int c)
- {
+ Matrix(int r,int c){
   rows=r;
   cols=c;
   ar=new int[rows][cols];
