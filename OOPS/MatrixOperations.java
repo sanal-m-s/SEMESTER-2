@@ -37,7 +37,8 @@ void sum(Matrix m){
      sum.ar[i][j]=ar[i][j]+m.ar[i][j];
     }}
  sum.display();
- } else{
+ }
+ else{
 System.out.println("Can't Perform Addition");
 }
 }
