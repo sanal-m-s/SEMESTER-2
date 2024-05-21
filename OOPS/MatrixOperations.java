@@ -29,8 +29,7 @@ void display(){
      System.out.println();
      }
 }
-void sum(Matrix m)
-{
+void sum(Matrix m){
  if(rows==m.rows && cols==m.cols )
  {
   Matrix sum=new Matrix(m.rows,m.cols);
