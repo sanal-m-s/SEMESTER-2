@@ -61,10 +61,8 @@ Matrix Product=new Matrix(rows,m.cols);
    }
 }
 }
-class MatrixOperations
-{
- public static void main(String args[])
- {
+class MatrixOperations{
+ public static void main(String args[]){
   Matrix m=new Matrix();
   Matrix m1=new Matrix();
   m.getData();
