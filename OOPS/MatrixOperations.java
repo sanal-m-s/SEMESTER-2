@@ -15,8 +15,7 @@ class Matrix{
   cols=c;
   ar=new int[rows][cols];
  }
- void getData()
- {
+ void getData(){
   System.out.println("Enter the matrix:");
    for(int i=0;i<rows;i++){
     for(int j=0;j<cols;j++){
