@@ -22,8 +22,7 @@ class Matrix{
         System.out.print("\nValue at Position ("+i+","+j+")"+": ");
       ar[i][j]=s.nextInt();}}
 }
-void display()
-{
+void display(){
   for(int i=0;i<rows;i++){
     for(int j=0;j<cols;j++){
       System.out.print(ar[i][j]+" ");}
