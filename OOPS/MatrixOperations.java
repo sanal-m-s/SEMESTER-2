@@ -30,8 +30,7 @@ void display(){
      }
 }
 void sum(Matrix m){
- if(rows==m.rows && cols==m.cols )
- {
+ if(rows==m.rows && cols==m.cols ){
   Matrix sum=new Matrix(m.rows,m.cols);
   for(int i=0;i<rows;i++){
    for(int j=0;j<cols;j++){
