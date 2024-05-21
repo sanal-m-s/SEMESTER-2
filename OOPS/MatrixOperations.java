@@ -3,8 +3,7 @@ class Matrix{
  int rows,cols;
  int ar[][];
  Scanner s=new Scanner(System.in);
- Matrix()
- {
+ Matrix(){
   System.out.print("\nEnter the number of rows:");
   rows=s.nextInt();
   System.out.print("\nEnter the number of columns:");
