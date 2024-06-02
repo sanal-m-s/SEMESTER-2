@@ -1,5 +1,5 @@
 import java.util.*;
-interface Resizable {
+interface Resizable{
     void resize(int percentage);
 }
 class Image implements Resizable {
